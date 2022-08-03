@@ -48,7 +48,8 @@ export default function ContextWrapper(props) {
         setDaySelected,
         showEventModel,
         setShowEventModel,
-        dispatchCalEvent
+        dispatchCalEvent,
+        savedEvents
       }}
     >
         {props.children}
