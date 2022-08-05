@@ -53,9 +53,7 @@ export default function ContextWrapper(props) {
         dispatchCalEvent,
         selectedEvent,
         setSelectedEvent,
-        savedEvents: [],
-        selectedEvent: null,
-        setSelectedEvent: () => {}
+        savedEvents,
       }}
     >
         {props.children}
