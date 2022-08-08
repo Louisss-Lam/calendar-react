@@ -20,4 +20,4 @@ const GlobalContext = React.createContext({
 
 });
 
-export default GlobalContext
+export default GlobalContext;
