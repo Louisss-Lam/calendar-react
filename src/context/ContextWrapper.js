@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useReducer} from 'react';
+import React, { useState, useEffect, useReducer, useMemo } from 'react';
 import GlobalContext from './GlobalContext';
 import dayjs from 'dayjs';
 
@@ -30,14 +30,26 @@ export default function ContextWrapper(props) {
   const [labels, setLabels] = useState([]);
   const [savedEvents, dispatchCalEvent] = useReducer(savedEventsReducer, [], initEvents);
 
+  const filteredEvents = useMemo(() => {
+    return savedEvents.filter((evt) => 
+      labels
+        .filter((lbl) => lbl.checked)
+        .map(lbl => lbl.label)
+        .includes(evt.label)
+    );
+  }, [savedEvents, labels]);
+
   useEffect(() => {
     localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
   }, [savedEvents]);
 
   useEffect(() => {
     setLabels((prevLabels) => {
-      return [...new Set( savedEvents.map(evt => evt.label))].map((label) => {
-        const currentLabel = prevLabels.find((lbl) => lbl.label === label);
+      return [...new Set(savedEvents.map((evt) => evt.label))].map(
+        (label) => {
+          const currentLabel = prevLabels.find(
+            (lbl) => lbl.label === label
+          );
         return {
           label,
           checked: currentLabel ? currentLabel.checked : true, 
@@ -51,6 +63,16 @@ export default function ContextWrapper(props) {
       setMonthIndex(smallCalendarMonth);
     } 
   }, [smallCalendarMonth]);
+
+  useEffect(() => {
+    if(!showEventModel) {
+      setSelectedEvent(null);
+    }
+  }, [showEventModel])
+
+  function updateLabel(label) {
+    setLabels(labels.map((lbl) => lbl.label === label.label ? label : lbl) )
+  }
 
   return (
     <GlobalContext.Provider 
@@ -68,7 +90,9 @@ export default function ContextWrapper(props) {
         setSelectedEvent,
         savedEvents,
         setLabels,
-        labels
+        labels,
+        updateLabel,
+        filteredEvents
       }}
     >
         {props.children}
