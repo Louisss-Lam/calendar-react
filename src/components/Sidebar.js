@@ -2,6 +2,7 @@ import React from 'react';
 import CreateEventButton from './CreateEventButton'
 import SmallCalendar from './SmallCalendar';
 import Labels from './Labels';
+import SetPomodoro from './Pomodoro/SetPomodoro';
 
 export default function Sidebar() {
   return (
@@ -9,6 +10,7 @@ export default function Sidebar() {
       <CreateEventButton />
       <SmallCalendar />
       <Labels />
+      <SetPomodoro />
     </aside>
   )
 }
