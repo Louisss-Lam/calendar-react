@@ -38,15 +38,16 @@ export default function SetPomodoro() {
         }
     }
 
-    const handleSumbit = () => {
-
+    const handleSumbit = e => {
+        e.preventDefault();
+        // updateExecute(newTimer);
     };
   return (
     <div>
         <form noValidate> 
             <div>
                 <input name="work" onChange={handleChange} value={newTimer.work} />
-                <input name="short-Break" onChange={handleChange} value={newTimer.short} />
+                <input name="shortBreak" onChange={handleChange} value={newTimer.short} />
                 <input name="longBreak" onChange={handleChange} value={newTimer.long} />
             </div>
             <Button title="Set Timer" _callback={handleSumbit} />
