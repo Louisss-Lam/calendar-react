@@ -10,7 +10,7 @@ const Signup = () => {
                 Sign in to your account
             </h1>
             <p clsaaNme='py-2'>
-                Already have an account yet? <Link to='/' className='underline'>Sign in.</Link>
+                Already have an account? <Link to='/' className='underline'>Sign in.</Link>
             </p>
         </div>
         <form>
