@@ -25,7 +25,7 @@ const Account = () => {
         </div>
       </div>
     </React.Fragment>
-  );
+  )
 }
 
 export default Account;
