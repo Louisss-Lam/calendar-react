@@ -10,6 +10,7 @@ import './App.css';
 import Signup from './components/LoginPage/Signup';
 import Signin from './components/LoginPage/Signin';
 import Account from './components/LoginPage/Account';
+import { AuthContextProvider } from './context/AuthContext';
 
 
 function App() {
@@ -31,11 +32,14 @@ function App() {
     //     </div>
     //   </div>
     // </React.Fragment>
-    <Routes>
+    <AuthContextProvider>
+      <Routes>
       <Route path='/' element={<Signin />} />
       <Route path='/signup' element={<Signup />} />
       <Route path='/account' element={<Account />} />
-    </Routes>
+      </Routes>
+    </AuthContextProvider>
+    
     
   );
 }

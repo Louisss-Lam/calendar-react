@@ -9,7 +9,7 @@ const Signin = () => {
           <h1 className='text-2xl font-bold py-2'>
               Sign up for a free account
           </h1>
-          <p clsaaNme='py-2'>
+          <p className='py-2'>
               Don't have an account yet? <Link to='/signup' className='underline'>Sign up.</Link>
           </p>
       </div>
