@@ -1,9 +1,12 @@
 import dayjs from 'dayjs';
 import React, { useContext }from 'react';
 import logo from '../assets/logo.png';
+import { UserAuth } from '../context/AuthContext';
 import GlobalContext from '../context/GlobalContext';
 
+
 export default function CalendarHeader() {
+  const { user, logout } = UserAuth();
   const {monthIndex, setMonthIndex} = useContext(GlobalContext)
   function handlePrevMonth() {
     setMonthIndex(monthIndex - 1);
@@ -40,7 +43,7 @@ export default function CalendarHeader() {
         <h2 className="ml-4 text-xl text-gray-500 font-bold">
           {dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")}
         </h2>
-        <p className='ml-10'>User Email:</p>
+        <p className='ml-10'>User Email: {user && user.email}</p>
         <button className='border rounded py-2 px-4 mr-5 ml-10 shadow bg-blue-500 text-white'>logout</button>
     </header>
   )
