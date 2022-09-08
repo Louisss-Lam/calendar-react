@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import React, { useContext }from 'react';
+import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import { UserAuth } from '../context/AuthContext';
 import GlobalContext from '../context/GlobalContext';
@@ -7,6 +8,18 @@ import GlobalContext from '../context/GlobalContext';
 
 export default function CalendarHeader() {
   const { user, logout } = UserAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try{
+      await logout();
+      navigate('/');
+      console.log('You are logged out');
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+
   const {monthIndex, setMonthIndex} = useContext(GlobalContext)
   function handlePrevMonth() {
     setMonthIndex(monthIndex - 1);
@@ -44,7 +57,7 @@ export default function CalendarHeader() {
           {dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")}
         </h2>
         <p className='ml-10'>User Email: {user && user.email}</p>
-        <button className='border rounded py-2 px-4 mr-5 ml-10 shadow bg-blue-500 text-white'>logout</button>
+        <button onClick={handleLogout} className='border rounded py-2 px-4 mr-5 ml-10 shadow bg-blue-500 text-white'>logout</button>
     </header>
   )
 }
