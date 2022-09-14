@@ -3,6 +3,7 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import PauseButton from './PauseButton';
 import PlayButton from './PlayButton';
+import SettingsButton from './SettingsButton';
 
 const blue = 'rgba(147, 197, 253)';
 const green = '#4aec8c';
@@ -24,9 +25,12 @@ const Timer = () => {
                 trailColor: "transparent"
             })}
         />
-        <div className='my-6 flex justify-center'>
-            <PlayButton />
+        <div className='mt-6 flex justify-center'>
+            <PlayButton className='from-blue-300'/>
             <PauseButton />
+        </div>
+        <div className='mt-1 flex justify-center'>
+            <SettingsButton />
         </div>
     </div>
   )
