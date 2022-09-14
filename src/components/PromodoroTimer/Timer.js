@@ -25,11 +25,9 @@ const Timer = () => {
                 trailColor: "transparent"
             })}
         />
-        <div className='mt-6 flex justify-center'>
-            <PlayButton className='from-blue-300'/>
+        <div className='mt-5 flex justify-center'>
+            <PlayButton />
             <PauseButton />
-        </div>
-        <div className='mt-1 flex justify-center'>
             <SettingsButton />
         </div>
     </div>
