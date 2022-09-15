@@ -5,6 +5,7 @@ import Labels from './Labels';
 import Timer from './PromodoroTimer/Timer';
 import Settings from './PromodoroTimer/Settings';
 import { useState } from 'react';
+import SettingsContext from './PromodoroTimer/SettingsContext';
 
 export default function Sidebar() {
   const [showSettings, setShowSettings] = useState(true);
@@ -14,7 +15,9 @@ export default function Sidebar() {
       <CreateEventButton />
       <SmallCalendar />
       <Labels />
-      {showSettings ? <Settings /> : <Timer /> }
+      <SettingsContext.Provider value={{}}>
+        {showSettings ? <Settings /> : <Timer /> }
+      </SettingsContext.Provider>
     </aside>
   )
 }
