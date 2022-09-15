@@ -4,12 +4,15 @@ import 'react-circular-progressbar/dist/styles.css';
 import PauseButton from './PauseButton';
 import PlayButton from './PlayButton';
 import SettingsButton from './SettingsButton';
+import { useContext, useState } from 'react';
+import SettingsContext from './SettingsContext';
 
 const blue = 'rgba(147, 197, 253)';
 const green = '#4aec8c';
 
 const Timer = () => {
     const percentage = 66;
+    const settingsInfo = useContext(SettingsContext);
 
   return (
     <div className='my-8'>
@@ -28,7 +31,7 @@ const Timer = () => {
         <div className='mt-5 flex justify-center'>
             <PlayButton />
             <PauseButton />
-            <SettingsButton />
+            <SettingsButton onClick={() => {settingsInfo.setShowSettings(true)}}/>
         </div>
     </div>
   )
